@@ -37,14 +37,16 @@ class Article(models.Model):
                 photo=url
             )
 
+    def paragraphe(n):
+        s = lambda: forgery_py.lorem_ipsum.sentence()
+        p = lambda: ''.join([s() for k in range(randint(2, 40))])
+        return '\n\n'.join(p() for j in range(5))
+
     def get_message_as_markdown(self):
         return mark_safe((markdown(self.message, safe_mode='escape')))
 
 
-def paragraphe(n):
-    s = lambda: forgery_py.lorem_ipsum.sentence()
-    p = lambda: ''.join([s() for k in range(randint(2, 40))])
-    return '\n\n'.join(p() for j in range(5))
+
 
 # def get_previsions(cls, date=datetime.today()):
 #     query = cls.objects.filter(retrait=date, accepted=True, archived=False,
