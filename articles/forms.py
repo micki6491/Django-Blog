@@ -3,6 +3,11 @@ from .models import Article
 
 
 class NewArticleForm(forms.ModelForm):
+    category = forms.ChoiceField(
+        label="Choose a category",
+        choices=[('Tips', 'Tips',), ('News', 'News',), ('Tutorials', 'Tutorials',)]
+    )
+
     subject = forms.CharField(
         label="What's the subject of your article?"
     )
@@ -22,4 +27,4 @@ class NewArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ['subject', 'photo', 'message']
+        fields = ['category','subject', 'photo', 'message']

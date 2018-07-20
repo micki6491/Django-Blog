@@ -37,6 +37,7 @@ def write_article(request):
         if form.is_valid():
             form.save(commit=False)
             a = Article.objects.create(
+                category=form.cleaned_data.get('category'),
                 subject=form.cleaned_data.get('subject'),
                 message=form.cleaned_data.get('message'),
                 photo=form.cleaned_data.get('photo'),
