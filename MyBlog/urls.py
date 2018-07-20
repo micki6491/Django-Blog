@@ -36,5 +36,8 @@ urlpatterns = [
                   path('new/complete/',
                        views.write_article_complete,
                        name='new_article_complete'),
+                  path('delete_success/<int:article_pk>/',
+                       views.DeleteSuccessView.as_view(),
+                       name='delete_success'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

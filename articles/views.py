@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from .models import Article
 from .forms import NewArticleForm
-from django.http import HttpResponse
 
 
 # Create your views here.
@@ -57,3 +56,16 @@ def write_article_complete(request):
 
     return render(request, 'new_article_complete.html',
                   context=context)
+
+
+class DeleteSuccessView(DetailView):
+    model = Article
+    context_object_name = 'article'
+    template_name = 'delete_complete.html'
+    pk_url_kwarg = 'article_pk'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success'] = Article.objects.filter(id=self.kwargs.get('article_pk')).delete().count(1)
+
+        return context

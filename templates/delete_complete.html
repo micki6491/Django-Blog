@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if success is 1 %}
+        <div class="card">
+            <div class="card-header text-success text-center">
+                <h4>Success!</h4>
+            </div>
+            <div class="card-body text-center">
+                Your article has been deleted successfully {{ article.pk }}
+                <a class="btn btn-outline-success"
+                   href="{% url 'home' %}"
+                   role="button">Back
+                </a>
+            </div>
+        </div>
+{% else %}
+    <div class="card">
+        <div class="card-header text-success text-center">
+            <h4>Failure!</h4>
+        </div>
+        <div class="card-body text-center">
+            There was a problem, please try again!
+            <a class="btn btn-outline-success"
+               href="{% url 'home' %}"
+               role="button">Back
+            </a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}#}
