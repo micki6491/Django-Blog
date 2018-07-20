@@ -52,4 +52,8 @@ def write_article(request):
 
 @login_required
 def write_article_complete(request):
-    return render(request, 'new_article_complete.html')
+    context = {}
+    context['last_article'] = Article.objects.last()
+
+    return render(request, 'new_article_complete.html',
+                  context=context)

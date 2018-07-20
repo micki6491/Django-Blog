@@ -29,7 +29,7 @@ class Article(models.Model):
             seed()
             subject = forgery_py.lorem_ipsum.title(randint(1, 5))
             message = paragraphe(randint(1, 5))
-            url = f'https://picsum.photos/700/300?image={randint(1,1000)}'
+            url = f'https://picsum.photos/950/450?image={randint(1,1000)}'
             Article.objects.create(
                 subject=subject,
                 creator=user,
