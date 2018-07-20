@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
 from django.utils.text import Truncator
 import forgery_py
 from random import seed, randint
+from markdown import markdown
 
 
 # Create your models here.
@@ -34,12 +36,14 @@ class Article(models.Model):
                 photo=url
             )
 
+    def get_message_as_markdown(self):
+        return mark_safe((markdown(self.message, safe_mode='escape')))
+
 
 def paragraphe(n):
     s = lambda: forgery_py.lorem_ipsum.sentence()
     p = lambda: ''.join([s() for k in range(randint(2, 40))])
     return ''.join(p() for j in range(5))
-
 
 # def get_previsions(cls, date=datetime.today()):
 #     query = cls.objects.filter(retrait=date, accepted=True, archived=False,

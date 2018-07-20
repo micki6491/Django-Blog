@@ -26,5 +26,5 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', views.HomeView.as_view(), name='home'),
                   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-                  path('tinymce/', include('tinymce.urls')),
+                  path('new/', views.write_article, name='new_article'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
