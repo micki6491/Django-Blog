@@ -6,8 +6,9 @@ import forgery_py
 from random import seed, randint
 from markdown import markdown
 
-
 # Create your models here.
+
+from django.db import models
 
 
 class Article(models.Model):

@@ -3,7 +3,16 @@ from .models import Article
 
 
 class NewArticleForm(forms.ModelForm):
+    subject = forms.CharField(
+        label="What's the subject of your article?"
+    )
+
+    photo = forms.ImageField(
+        label='Choose your image',
+        help_text='The image should be 700x300.')
+
     message = forms.CharField(
+        label="Write your article below",
         widget=forms.Textarea(
             attrs={'rows': 100, 'placeholder': 'What is on your mind?'}
         ),
@@ -13,4 +22,4 @@ class NewArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ['subject', 'message', ]
+        fields = ['subject', 'photo', 'message']

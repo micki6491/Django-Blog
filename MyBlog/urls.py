@@ -22,9 +22,19 @@ from MyBlog import settings
 from articles import views
 
 urlpatterns = [
-                  path('article/<int:article_pk>/', views.ArticleView.as_view(), name='article_page'),
+                  path('article/<int:article_pk>/',
+                       views.ArticleView.as_view(),
+                       name='article_page'),
                   path('admin/', admin.site.urls),
-                  path('', views.HomeView.as_view(), name='home'),
-                  path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-                  path('new/', views.write_article, name='new_article'),
+                  path('', views.HomeView.as_view(),
+                       name='home'),
+                  path('logout/', auth_views.LogoutView.as_view(),
+                       name='logout'),
+                  path('new/',
+                       views.write_article,
+                       name='new_article'),
+                  path('new/complete/',
+                       views.write_article_complete,
+                       name='new_article_complete'),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
