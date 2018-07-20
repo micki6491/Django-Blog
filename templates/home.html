@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block featured %}
+    <div class="card text-center">
+        <div class="card-header">
+            Featured
+            <div class="card-body">
+                <img class="card-img" src="{{ last_article.photo }}">
+                <h5 class="card-title">{{ last_article.subject }}</h5>
+                <p class="card-text">
+                    {{ article }}
+                </p>
+                {% if last_article %}
+                    <a href="{% url 'article_page' last_article.pk %}" class="btn btn-primary">Read Article</a>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">{{ last_article.created_at|naturaltime }}
+                by {{ last_article.creator }}</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% for article in articles %}
+        <div class="col-sm-8">
+            <div class="card px-2 py-2 top-buffer">
+                <img class="card-img-top" src="{{ article.photo }}">
+                <h5 class="card-title">{{ article.subject }}</h5>
+                <p class="card-text">{{ article }}</p>
+                <a href="{% url 'article_page' article.pk %}" class="btn btn-dark py-2 px-5 top-buffer">Read More</a>
+                <div class="card-footer text-muted">
+                    {{ article.created_at|naturaltime }} by {{ article.creator }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

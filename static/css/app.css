@@ -1,0 +1,18 @@
+.navbar-brand {
+    font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+    margin: auto;
+}
+
+body {
+    background-image: url(../img/concrete-texture.png);
+    background-attachment: fixed;
+}
+
+.top-buffer {
+    margin-top: 20px;
+}
+
+.col-sm-8{
+    padding-left: 0;
+}

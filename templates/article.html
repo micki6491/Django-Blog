@@ -1,0 +1,19 @@
+{% extends 'base.html' %}<!DOCTYPE html>
+{% load humanize %}
+{% block title %}{{ article.subject }}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item active">{{ article.subject }}</li>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="form-text">
+        {{ article.message }}
+    </div>
+{% endblock %}
