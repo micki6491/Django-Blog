@@ -12,6 +12,7 @@ from django.db import models
 
 
 class Article(models.Model):
+    category = models.CharField(max_length=30, default='default')
     subject = models.CharField(max_length=30, unique=True)
     creator = models.ForeignKey(User, related_name='articles', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -25,25 +26,28 @@ class Article(models.Model):
     @classmethod
     def generate_data(cls):
         user = User.objects.first()
+        categories = ['Tutoriels','Tips','News']
         for i in range(25):
             seed()
+            categorie = categories[randint(0,2)]
             subject = forgery_py.lorem_ipsum.title(randint(1, 5))
             message = paragraphe(randint(1, 5))
             url = f'https://picsum.photos/950/450?image={randint(1,1000)}'
             Article.objects.create(
+                category=categorie,
                 subject=subject,
                 creator=user,
                 message=message,
                 photo=url
             )
 
-    def paragraphe(n):
-        s = lambda: forgery_py.lorem_ipsum.sentence()
-        p = lambda: ''.join([s() for k in range(randint(2, 40))])
-        return '\n\n'.join(p() for j in range(5))
-
     def get_message_as_markdown(self):
         return mark_safe((markdown(self.message, safe_mode='escape')))
+
+def paragraphe(n):
+    s = lambda: forgery_py.lorem_ipsum.sentence()
+    p = lambda: ''.join([s() for k in range(randint(2, 40))])
+    return '\n\n'.join(p() for j in range(5))
 
 
 

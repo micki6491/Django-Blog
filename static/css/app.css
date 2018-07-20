@@ -13,6 +13,14 @@ body {
     margin-top: 20px;
 }
 
+.top-buffer-sm {
+    margin-top: 5px;
+}
+
+.bot-debuffer-sm {
+    margin-bottom: -5px;
+}
+
 .col-sm-8{
     padding-left: 0;
 }
