@@ -24,7 +24,7 @@ class Article(models.Model):
     @classmethod
     def generate_data(cls):
         user = User.objects.first()
-        for i in range(50):
+        for i in range(25):
             seed()
             subject = forgery_py.lorem_ipsum.title(randint(1, 5))
             message = paragraphe(randint(1, 5))
@@ -43,7 +43,7 @@ class Article(models.Model):
 def paragraphe(n):
     s = lambda: forgery_py.lorem_ipsum.sentence()
     p = lambda: ''.join([s() for k in range(randint(2, 40))])
-    return ''.join(p() for j in range(5))
+    return '\n\n'.join(p() for j in range(5))
 
 # def get_previsions(cls, date=datetime.today()):
 #     query = cls.objects.filter(retrait=date, accepted=True, archived=False,
