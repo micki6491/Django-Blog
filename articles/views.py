@@ -2,7 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
-from django.core.paginator import Paginator
 from .models import Article
 from .forms import NewArticleForm
 
