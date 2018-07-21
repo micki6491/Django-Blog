@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
+from django.core.paginator import Paginator
 from .models import Article
 from .forms import NewArticleForm
 
@@ -12,11 +13,16 @@ class HomeView(ListView):
     model = Article
     context_object_name = 'articles'
     template_name = 'home.html'
+    articles = Article.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['last_article'] = Article.objects.last()
         return context
+
+    def get_queryset(self):
+        queryset = self.articles.order_by('-created_at')
+        return queryset
 
 
 class ArticleView(DetailView):

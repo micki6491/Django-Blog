@@ -5,6 +5,7 @@ from django.utils.text import Truncator
 import forgery_py
 from random import seed, randint
 from markdown import markdown
+import math
 
 # Create your models here.
 
@@ -23,13 +24,30 @@ class Article(models.Model):
         truncated_message = Truncator(self.message)
         return truncated_message.chars(100)
 
+    def get_page_count(self):
+        articles = Article.objects.filter(category=self.category)
+        count = articles.count()
+        pages = count / 5
+        return math.ceil(pages)
+
+    def has_many_pages(self, count=None):
+        if count is None:
+            count = self.get_page_count()
+        return count > 6
+
+    def get_page_range(self):
+        count = self.get_page_count()
+        if self.has_many_pages():
+            return range(1, 5)
+        return range(1, count + 1)
+
     @classmethod
     def generate_data(cls):
         user = User.objects.first()
-        categories = ['Tutoriels','Tips','News']
+        categories = ['Tutorials', 'Tips', 'News']
         for i in range(25):
             seed()
-            categorie = categories[randint(0,2)]
+            categorie = categories[randint(0, 2)]
             subject = forgery_py.lorem_ipsum.title(randint(1, 5))
             message = paragraphe(randint(1, 5))
             url = f'https://picsum.photos/950/450?image={randint(1,1000)}'
@@ -44,13 +62,11 @@ class Article(models.Model):
     def get_message_as_markdown(self):
         return mark_safe((markdown(self.message, safe_mode='escape')))
 
+
 def paragraphe(n):
     s = lambda: forgery_py.lorem_ipsum.sentence()
     p = lambda: ''.join([s() for k in range(randint(2, 40))])
     return '\n\n'.join(p() for j in range(5))
-
-
-
 
 # def get_previsions(cls, date=datetime.today()):
 #     query = cls.objects.filter(retrait=date, accepted=True, archived=False,
