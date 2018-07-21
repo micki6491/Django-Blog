@@ -4,6 +4,7 @@ __pycache__/
 
 *.py[cod]
 .env
+media/
 venv/
 *$py.class
 

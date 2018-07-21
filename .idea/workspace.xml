@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7fd2b3b7-e7ec-445c-910d-a3b698f15196" name="Default" comment="">
+    <list default="true" id="7fd2b3b7-e7ec-445c-910d-a3b698f15196" name="Default" comment="fixing image path bug? Attempt n°3">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/Zeolearnbrain.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/Zeolearnbrain_8AJPNhq.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/Zeolearnbrain_hxiLlLb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_8AtcoGQ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_A5oh7Ue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_IG5KO3o.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_Qwpvso2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_SQiwPSU.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_qY2PDRY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_r2cYq22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/apprendre_portugais_vxh8GlJ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/chalet2018.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/750x300.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/Avatar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/apprendre_portugais.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/apprendre_portugais_9Tt3TIt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/apprendre_portugais_WWpFRxf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/emptyAvatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/qbkls.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +38,8 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="81" column="67" selection-start-line="81" selection-end-line="82" />
+            <state relative-caret-position="225">
+              <caret line="81" column="24" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
               <folding>
                 <element signature="e#65#85#0#DjangoTemplate" />
               </folding>
@@ -79,18 +59,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyBlog/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-              <folding>
-                <element signature="e#630#672#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/articles/views.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,11 +71,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="article.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/article.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="25" column="71" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+            <state relative-caret-position="440">
+              <caret line="28" column="19" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="28" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyBlog/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+              <folding>
+                <element signature="e#307#316#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyBlog/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="498">
+              <caret line="45" column="79" selection-start-line="45" selection-start-column="79" selection-end-line="45" selection-end-column="79" />
+              <folding>
+                <element signature="e#630#672#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,6 +152,7 @@
       <find>if</find>
       <find>con</find>
       <find>img-top</find>
+      <find>photophoto</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,7 +176,6 @@
         <option value="$PROJECT_DIR$/accounts/templatetags/_tag_auth_form.html" />
         <option value="$PROJECT_DIR$/accounts/templatetags/auth_tag.html" />
         <option value="$PROJECT_DIR$/accounts/templatetags/auth_tag.py" />
-        <option value="$PROJECT_DIR$/MyBlog/urls.py" />
         <option value="$PROJECT_DIR$/static/css/accounts.css" />
         <option value="$PROJECT_DIR$/templates/base_accounts.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
@@ -183,9 +184,11 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/templates/new_article.html" />
+        <option value="$PROJECT_DIR$/MyBlog/urls.py" />
+        <option value="$PROJECT_DIR$/templates/article.html" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/MyBlog/settings.py" />
-        <option value="$PROJECT_DIR$/templates/article.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -321,7 +324,21 @@
       <option name="project" value="LOCAL" />
       <updated>1532211315790</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixing image path bug? Attempt n°2">
+      <created>1532212142292</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1532212142292</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixing image path bug? Attempt n°3">
+      <created>1532212863461</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1532212863461</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -343,8 +360,8 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49898785" weight="0.3278867" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946696" weight="0.27233115" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.8566098" visible="true" weight="0.3017429" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.8566098" visible="true" weight="0.3017429" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -371,7 +388,9 @@
     <MESSAGE value="add static_root to settings" />
     <MESSAGE value="add space between image and subject and improved new_article.html" />
     <MESSAGE value="fixing image path bug?" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing image path bug?" />
+    <MESSAGE value="fixing image path bug? Attempt n°2" />
+    <MESSAGE value="fixing image path bug? Attempt n°3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing image path bug? Attempt n°3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -656,9 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -673,27 +689,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyBlog/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-          <folding>
-            <element signature="e#630#672#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-27">
           <caret line="9" column="85" selection-start-line="9" selection-start-column="85" selection-end-line="9" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/new_article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -703,16 +702,6 @@
           <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyBlog/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="127" column="14" selection-start-line="127" selection-start-column="14" selection-end-line="127" selection-end-column="14" />
-          <folding>
-            <element signature="e#307#316#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -727,20 +716,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MyBlog/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="45" column="79" selection-start-line="45" selection-start-column="79" selection-end-line="45" selection-end-column="79" />
+          <folding>
+            <element signature="e#630#672#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/new_article.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="28" column="19" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="28" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="81" column="67" selection-start-line="81" selection-end-line="82" />
+        <state relative-caret-position="225">
+          <caret line="81" column="24" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
           <folding>
             <element signature="e#65#85#0#DjangoTemplate" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article.html">
+    <entry file="file://$PROJECT_DIR$/MyBlog/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="25" column="71" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+        <state relative-caret-position="280">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+          <folding>
+            <element signature="e#307#316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
