@@ -23,7 +23,7 @@
 {% block content %}
     <div class="col-sm-12 top-buffer">
         {% if "picsum" not in article.photo %}
-            <img class="card-img-top border-dark" src="{{ article.photo }}">
+            <img class="card-img-top border-dark" src="{{ article.photo.url }}">
         {% else %}
             <img class="card-img-top border border-dark" src="{{ article.photo }}">
         {% endif %}
