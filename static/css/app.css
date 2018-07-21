@@ -11,6 +11,12 @@ body {
     background-attachment: fixed;
 }
 
+.article-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #4e555b;
+    background-color: #f7efd2;
+}
+
 .top-buffer {
     margin-top: 20px;
 }
@@ -26,9 +32,11 @@ body {
 .col-sm-8 {
     padding-left: 0;
 }
+
 .col-sm-4 {
     padding-left: 0;
 }
-.custom_class{
+
+.custom_class {
     padding: 20px;
 }

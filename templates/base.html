@@ -4,9 +4,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}My Blog{% endblock %}</title>
+    <title>{% block title %}Blog Name{% endblock %}</title>
     <!--<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% block stylesheet %}{% endblock %}
@@ -15,7 +16,7 @@
 {% block body %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand font-weight-bold" href="{% url 'home' %}">Transit-Smart</a>
+            <a class="navbar-brand font-weight-bold" href="{% url 'home' %}">Blog Name</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
                     aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,17 +51,27 @@
         {% block featured %}{% endblock %}
         <div class="row">
             <div class="col-sm-8">
+                {% block contentheader %}{% endblock %}
                 {% block content %}{% endblock %}
             </div>
-                <div class="col-sm-4">
-                    <div class="card-header top-buffer text-center border-bottom-0">
-                        <h4 class="font-weight-bold">CUSTOM WIDGET</h4>
-                    </div>
-                    <div class="col-auto p-0">
-                            <div class="card body text-center top bg-transparent">
-                            </div>
+            <div class="col-sm-4">
+                <div class="card-header top-buffer text-center border-bottom-0">
+                    <h4 class="font-weight-bold text-uppercase">
+                        {% block customwidgethead1 %}CUSTOM WIDGETHEAD1{% endblock %}
+                    </h4>
+                </div>
+                <div class="col-auto p-0">
+                    <div class="card">
+                        <div class="card body text-center top bg-transparent">
+                            {% block customwidgetbody1 %}
+                                <p> CUSTOMWIDGETBODY1</p>
+                                <p> CUSTOMWIDGETBODY1</p>
+                                CUSTOMWIDGETBODY1
+                            {% endblock %}
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 {% endblock body %}
