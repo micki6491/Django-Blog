@@ -18,11 +18,10 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['last_article'] = Article.objects.last()
+        context['article_tips'] = Article.objects.filter(category='Tips').order_by('-created_at')[:3]
+        context['article_news'] = Article.objects.filter(category='News').order_by('-created_at')[:3]
+        context['article_tutos'] = Article.objects.filter(category='Tutorials').order_by('-created_at')[:3]
         return context
-
-    def get_queryset(self):
-        queryset = self.articles.order_by('-created_at')
-        return queryset
 
 
 class ArticleView(DetailView):

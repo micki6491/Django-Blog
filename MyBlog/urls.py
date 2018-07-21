@@ -22,7 +22,7 @@ from MyBlog import settings
 from articles import views
 
 urlpatterns = [
-                  path('article/<int:article_pk>/',
+                  path('articles/<int:article_pk>/',
                        views.ArticleView.as_view(),
                        name='article_page'),
                   path('admin/', admin.site.urls),

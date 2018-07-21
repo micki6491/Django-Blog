@@ -27,7 +27,7 @@ class Article(models.Model):
     def get_page_count(self):
         articles = Article.objects.filter(category=self.category)
         count = articles.count()
-        pages = count / 5
+        pages = count / 10
         return math.ceil(pages)
 
     def has_many_pages(self, count=None):
