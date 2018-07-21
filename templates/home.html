@@ -11,7 +11,7 @@
     <div class="card text-center top-buffer">
         <div class="card-body">
             <img class="card-img" src="{{ last_article.photo }}">
-            <div class="card-title h4">{{ last_article.subject }}</div>
+            <div class="card-title h4 top-buffer">{{ last_article.subject }}</div>
             <p class="card-text">
                 {{ article }}
             </p>
@@ -80,7 +80,7 @@
                 <div class="col-sm-12 top-buffer-sm">
                     <div class="card border-top-0 px-2 py-2">
                         <img class="card-img-top" src="{{ article.photo }}">
-                        <h5 class="card-title">{{ article.category }}{{ article.subject }}</h5>
+                        <h5 class="card-title top-buffer">{{ article.subject }}</h5>
                         <p class="card-text">{{ article }}</p>
                         <a href="{% url 'article_page' article.pk %}" class="btn btn-dark py-2 px-5 top-buffer">Read
                             More</a>

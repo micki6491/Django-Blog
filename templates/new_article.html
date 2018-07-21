@@ -11,13 +11,23 @@
         var simplemde = new SimpleMDE();
     </script>
 {% endblock %}
-
+{% block contentheader %}
+    <div class="col-sm-12 top-buffer">
+        <div class="card-header top-buffer text-center border-bottom-0">
+            <h4 class="font-weight-bold text-uppercase">
+                Create an article
+            </h4>
+        </div>
+    </div>
+{% endblock %}
 {% block content %}
-    <form method="post" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
-        {% include 'includes/form.html' %}
-        <button type="submit" class="btn btn-outline-success btn-block">Save</button>
-		<a href="{% url 'home'%}" class="btn btn-outline-secondary btn-block" role="button">Cancel</a>
-    </form>
+    <div class="col-sm-12 top-buffer">
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {% include 'includes/form.html' %}
+            <button type="submit" class="btn btn-outline-success btn-block">Save</button>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-block" role="button">Cancel</a>
+        </form>
+    </div>
 
 {% endblock %}
