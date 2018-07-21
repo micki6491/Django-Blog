@@ -3,62 +3,68 @@
 {% load humanize %}
 
 {% block featured %}
-    <div class="card text-center">
-        <div class="card-header h5">
-            {{ last_article.category }}
-            <div class="card-body">
-                <img class="card-img" src="{{ last_article.photo }}">
-                <div class="card-title h4">{{ last_article.subject }}</div>
-                <p class="card-text">
-                    {{ article }}
-                </p>
-                {% if last_article %}
-                    <a href="{% url 'article_page' last_article.pk %}"
-                       class="btn btn-dark">Read Article
-                    </a>
-                    {% if last_article.creator == request.user %}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#deleteLastArticleModal">
-                            Delete this article
-                        </button>
+    <div class="card-header text-center border-0">
+        <h4 class="font-weight-bold">
+            FEATURED
+        </h4>
+    </div>
+    <div class="card text-center top-buffer">
+        <div class="card-body">
+            <img class="card-img" src="{{ last_article.photo }}">
+            <div class="card-title h4">{{ last_article.subject }}</div>
+            <p class="card-text">
+                {{ article }}
+            </p>
+            {% if last_article %}
+                <a href="{% url 'article_page' last_article.pk %}"
+                   class="btn btn-dark">Read Article
+                </a>
+                {% if last_article.creator == request.user %}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#deleteLastArticleModal">
+                        Delete this article
+                    </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteLastArticleModal" tabindex="-1" role="dialog"
-                             aria-labelledby="deleteLastArticleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteLastArticleModalLabel">Delete
-                                            confirmation</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
-                                            Close
-                                        </button>
-                                        <a href="{% url 'delete_success' last_article.pk %}" type="button"
-                                           class="btn btn-danger">Delete</a>
-                                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteLastArticleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="deleteLastArticleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteLastArticleModalLabel">Delete
+                                        confirmation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <a href="{% url 'delete_success' last_article.pk %}" type="button"
+                                       class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>
-                    {% endif %}
+                    </div>
                 {% endif %}
-            </div>
-            <div class="card-footer text-muted h6">{{ last_article.created_at|naturaltime }}
-                by {{ last_article.creator }}</div>
+            {% endif %}
         </div>
+        <div class="card-footer text-muted h6">{{ last_article.created_at|naturaltime }}
+            by {{ last_article.creator }}</div>
+
     </div>
 {% endblock %}
 
 {% block content %}
-    <nav class="col-sm-8">
+    <nav class="col-sm-12">
+        <div class="card-header top-buffer text-center border-bottom-0">
+            <h4 class="font-weight-bold">LAST ARTICLES</h4>
+        </div>
         <div class="nav nav-tabs top-buffer bot-debuffer-sm" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-tips-tab" data-toggle="tab" href="#nav-tips" role="tab"
                aria-controls="nav-tips" aria-selected="true">Tips</a>
@@ -71,7 +77,7 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-tips" role="tabpanel" aria-labelledby="nav-tips-tab">
             {% for article in article_tips %}
-                <div class="col-sm-8 top-buffer-sm">
+                <div class="col-sm-12 top-buffer-sm">
                     <div class="card border-top-0 px-2 py-2">
                         <img class="card-img-top" src="{{ article.photo }}">
                         <h5 class="card-title">{{ article.category }}{{ article.subject }}</h5>
@@ -127,7 +133,7 @@
             {% include 'includes/pagination.html' %}
 
             {% for article in article_news %}
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div class="card px-2 py-2 top-buffer-sm bot-debuffer-sm border-top-0">
                         <img class="card-img-top" src="{{ article.photo }}">
                         <h5 class="card-title">{{ article.category }}{{ article.subject }}</h5>
@@ -181,7 +187,7 @@
         </div>
         <div class="tab-pane fade" id="nav-tutorials" role="tabpanel" aria-labelledby="nav-tutorials-tab">
             {% for article in article_tutos %}
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div class="card px-2 py-2 top-buffer-sm bot-debuffer-sm border-top-0">
                         <img class="card-img-top" src="{{ article.photo }}">
                         <h5 class="card-title">{{ article.category }}{{ article.subject }}</h5>

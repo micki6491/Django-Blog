@@ -1,10 +1,12 @@
 .navbar-brand {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Anton', sans-serif;
+    /*font-family: 'Indie Flower', cursive;*/
     font-size: 40px;
     margin: auto;
 }
 
 body {
+    font-family: 'Anton', sans-serif;
     background-image: url(../img/concrete-texture.png);
     background-attachment: fixed;
 }
@@ -21,6 +23,12 @@ body {
     margin-bottom: -5px;
 }
 
-.col-sm-8{
+.col-sm-8 {
     padding-left: 0;
+}
+.col-sm-4 {
+    padding-left: 0;
+}
+.custom_class{
+    padding: 20px;
 }

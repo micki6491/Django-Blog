@@ -39,5 +39,8 @@ urlpatterns = [
                   path('delete_success/<int:article_pk>/',
                        views.DeleteSuccessView.as_view(),
                        name='delete_success'),
+                  path('login/',
+                       auth_views.LoginView.as_view(template_name='login.html'),
+                       name='login'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
