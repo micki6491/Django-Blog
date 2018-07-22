@@ -16,6 +16,9 @@ class Publication(models.Model):
     def __str__(self):
         return self.name
 
+    def get_last3_articles(self):
+        return self.articles.all().order_by('-created_at')[:3]
+
 
 class Article(models.Model):
     subject = models.CharField(max_length=30, unique=True)
@@ -27,9 +30,6 @@ class Article(models.Model):
 
     def __str__(self):
         return Truncator(self.message).words(20)
-
-    class Meta:
-        ordering = ('created_at',)
 
     @classmethod
     def generate_data(cls):
