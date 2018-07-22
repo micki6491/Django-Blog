@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
-from .models import Article
+from .models import Article, FeedModule
 from .forms import NewArticleForm
 
 
@@ -20,6 +20,7 @@ class HomeView(ListView):
         context['article_tips'] = Article.objects.filter(category='Tips').order_by('-created_at')[:3]
         context['article_news'] = Article.objects.filter(category='News').order_by('-created_at')[:3]
         context['article_tutos'] = Article.objects.filter(category='Tutorials').order_by('-created_at')[:3]
+        context['feed'] = FeedModule.objects.last()
         return context
 
 
