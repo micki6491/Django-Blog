@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.utils.text import Truncator
 from django.utils.safestring import mark_safe
 import forgery_py
 from random import seed, randint
@@ -25,7 +26,7 @@ class Article(models.Model):
     publication = models.ForeignKey(Publication, related_name='articles', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.subject
+        return Truncator(self.message).words(20)
 
     class Meta:
         ordering = ('created_at',)
