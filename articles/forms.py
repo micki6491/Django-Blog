@@ -1,12 +1,9 @@
 from django import forms
-from .models import Article
+from .models import Article, Publication
 
 
 class NewArticleForm(forms.ModelForm):
-    category = forms.ChoiceField(
-        label="Choose a category",
-        choices=[('Tips', 'Tips',), ('News', 'News',), ('Tutorials', 'Tutorials',)]
-    )
+    publication = forms.ModelChoiceField(queryset=Publication.objects.all())
 
     subject = forms.CharField(
         label="What's the subject of your article?"
@@ -27,4 +24,4 @@ class NewArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ['category','subject', 'photo', 'message']
+        fields = ['publication', 'subject', 'photo', 'message']

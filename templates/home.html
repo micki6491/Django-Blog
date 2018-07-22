@@ -17,7 +17,7 @@
             {% endif %}
             <div class="card-title h4 top-buffer">{{ last_article.subject }}</div>
             <p class="card-text">
-                {{ article }}
+                {{ Last_article }}
             </p>
             {% if last_article %}
                 <a href="{% url 'article_page' last_article.pk %}"
@@ -70,184 +70,80 @@
             <h4 class="font-weight-bold">LAST ARTICLES</h4>
         </div>
         <div class="nav nav-tabs top-buffer bot-debuffer-sm" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-tips-tab" data-toggle="tab" href="#nav-tips" role="tab"
-               aria-controls="nav-tips" aria-selected="true">Tips</a>
-            <a class="nav-item nav-link" id="nav-news-tab" data-toggle="tab" href="#nav-news" role="tab"
-               aria-controls="nav-news" aria-selected="false">News</a>
-            <a class="nav-item nav-link" id="nav-tutorials-tab" data-toggle="tab" href="#nav-tutorials" role="tab"
-               aria-controls="nav-tutorials" aria-selected="false">Tutorials</a>
+            {% for tab in publications %}
+                {% if tab == publications.first %}
+                    <a class="nav-item nav-link active" id="nav-Tips-tab" data-toggle="tab" href="#nav-{{ tab }}"
+                       role="tab"
+                       aria-controls="nav-{{ tab }}" aria-selected="true">{{ tab }}</a>
+                {% else %}
+                    <a class="nav-item nav-link" id="nav-Tips-tab" data-toggle="tab" href="#nav-{{ tab }}" role="tab"
+                       aria-controls="nav-{{ tab }}" aria-selected="true">{{ tab }}</a>
+                {% endif %}
+            {% endfor %}
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-tips" role="tabpanel" aria-labelledby="nav-tips-tab">
-            {% for article in article_tips %}
-                <div class="col-sm-12 top-buffer-sm">
-                    <div class="card border-top-0 px-2 py-2">
-                        {% if "picsum" not in article.photo %}
-                            <img class="card-img-top border-dark" src="{{ article.photo.url }}">
-                        {% else %}
-                            <img class="card-img-top border border-dark" src="{{ article.photo }}">
-                        {% endif %}
-                        <h5 class="card-title top-buffer">{{ article.subject }}</h5>
-                        <p class="card-text">{{ article }}</p>
-                        <a href="{% url 'article_page' article.pk %}" class="btn btn-dark py-2 px-5 top-buffer">Read
-                            More</a>
-                        {% if article.creator == request.user %}
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger top-buffer-sm" data-toggle="modal"
-                                    data-target="#deleteArticleModal{{ article.pk }}">
-                                Delete this article
-                            </button>
+        {% for tab in publications %}
+            <div class="tab-pane fade show active" id="nav-{{ tab }}" role="tabpanel"
+                 aria-labelledby="nav-{{ tab }}-tab">
+                {% for article in tab.articles.all %}
+                    <div class="col-sm-12 top-buffer-sm">
+                        <div class="card border-top-0 px-2 py-2">
+                            {% if "picsum" not in article.photo %}
+                                <img class="card-img-top border-dark" src="{{ article.photo.url }}">
+                            {% else %}
+                                <img class="card-img-top border border-dark" src="{{ article.photo }}">
+                            {% endif %}
+                            <h5 class="card-title top-buffer">{{ article.subject }}</h5>
+                            <p class="card-text">{{ article }}</p>
+                            <a href="{% url 'article_page' article.pk %}" class="btn btn-dark py-2 px-5 top-buffer">Read
+                                More</a>
+                            {% if article.creator == request.user %}
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger top-buffer-sm" data-toggle="modal"
+                                        data-target="#deleteArticleModal{{ article.pk }}">
+                                    Delete this article
+                                </button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="deleteArticleModal{{ article.pk }}" tabindex="-1"
-                                 role="dialog"
-                                 aria-labelledby="deleteArticleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="Delete Article" id="deleteArticleModal{{ article.pk }}">
-                                                Delete
-                                                confirmation</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-secondary"
-                                                    data-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <a href="{% url 'delete_success' article.pk %}"
-                                               type="button"
-                                               class="btn btn-danger">Delete</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteArticleModal{{ article.pk }}" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="deleteArticleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="Delete Article" id="deleteArticleModal{{ article.pk }}">
+                                                    Delete
+                                                    confirmation</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                        data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a href="{% url 'delete_success' article.pk %}"
+                                                   type="button"
+                                                   class="btn btn-danger">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            {% endif %}
+                            <div class="card-footer text-muted">
+                                {{ article.created_at|naturaltime }} by {{ article.creator }}
                             </div>
-                        {% endif %}
-                        <div class="card-footer text-muted">
-                            {{ article.created_at|naturaltime }} by {{ article.creator }}
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="tab-pane fade" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
-            {% include 'includes/pagination.html' %}
-
-            {% for article in article_news %}
-                <div class="col-sm-12">
-                    <div class="card px-2 py-2 top-buffer-sm bot-debuffer-sm border-top-0">
-                        <img class="card-img-top" src="{{ article.photo }}">
-                        <h5 class="card-title">{{ article.category }}{{ article.subject }}</h5>
-                        <p class="card-text">{{ article }}</p>
-                        <a href="{% url 'article_page' article.pk %}" class="btn btn-dark py-2 px-5 top-buffer">Read
-                            More</a>
-                        {% if article.creator == request.user %}
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger top-buffer-sm" data-toggle="modal"
-                                    data-target="#deleteArticleNews{{ article.pk }}">
-                                Delete this article
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="deleteArticleNews{{ article.pk }}" tabindex="-1"
-                                 role="dialog"
-                                 aria-labelledby="deleteArticleNewsLabel{{ article.pk }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="Delete Article" id="deleteArticleNews{{ article.pk }}">Delete
-                                                confirmation</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-secondary"
-                                                    data-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <a href="{% url 'delete_success' article.pk %}"
-                                               type="button"
-                                               class="btn btn-danger">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                        <div class="card-footer text-muted">
-                            {{ article.created_at|naturaltime }} by {{ article.creator }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-
-        </div>
-        <div class="tab-pane fade" id="nav-tutorials" role="tabpanel" aria-labelledby="nav-tutorials-tab">
-            {% for article in article_tutos %}
-                <div class="col-sm-12">
-                    <div class="card px-2 py-2 top-buffer-sm bot-debuffer-sm border-top-0">
-                        <img class="card-img-top" src="{{ article.photo }}">
-                        <h5 class="card-title">{{ article.category }}{{ article.subject }}</h5>
-                        <p class="card-text">{{ article }}</p>
-                        <a href="{% url 'article_page' article.pk %}" class="btn btn-dark py-2 px-5 top-buffer">Read
-                            More</a>
-                        {% if article.creator == request.user %}
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger top-buffer-sm" data-toggle="modal"
-                                    data-target="#deleteArticleTutorials{{ article.pk }}">
-                                Delete this article
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="deleteArticleTutorials{{ article.pk }}" tabindex="-1"
-                                 role="dialog"
-                                 aria-labelledby="deleteArticleTutorialsLabel{{ article.pk }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="Delete Article" id="deleteArticleTutorials{{ article.pk }}">
-                                                Delete
-                                                confirmation</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-secondary"
-                                                    data-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <a href="{% url 'delete_success' article.pk %}"
-                                               type="button"
-                                               class="btn btn-danger">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                        <div class="card-footer text-muted">
-                            {{ article.created_at|naturaltime }} by {{ article.creator }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-
-        </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 
 {% endblock %}
@@ -256,7 +152,6 @@
 {% endblock %}
 
 {% block customwidgetbody1 %}
-{#    <script type="text/javascript" src="http://output12.rssinclude.com/output?type=js&amp;id=1186790&amp;hash=7bd65b2fe598dee369d24701faf26ce6"></script>#}
 {% endblock %}
 
 {% block javascript %}

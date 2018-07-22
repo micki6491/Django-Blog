@@ -11,71 +11,64 @@ import feedparser
 from django.db import models
 
 
-class FeedModule(models.Model):
-    title = models.CharField(max_length=20, default='default')
-    message = models.TextField(max_length=1000, default='default')
-    author = models.CharField(max_length=15, default='default')
-    date = models.DateTimeField(auto_now_add=False)
+# class FeedModule(models.Model):
+#     title = models.CharField(max_length=20, default='default')
+#     message = models.TextField(max_length=1000, default='default')
+#     author = models.CharField(max_length=15, default='default')
+#     date = models.DateTimeField(auto_now_add=False)
+#
+#     @classmethod
+#     def update_feed(cls):
+#         d = feedparser.parse('https://github.com/micki6491/Django-Blog/commits/master.atom')
+#         a = d.entries[0]
+#         date = d.feed.updated
+#         title = a.title
+#         message = a.content
+#         if FeedModule.objects.count() == 0:
+#             f = FeedModule.objects.create(title=title, message=message, date=date)
+#             f.save()
+#         else:
+#             f = FeedModule.objects.last()
+#             f.delete()
+#             f = FeedModule.objects.create(title=title, message=message, date=date)
+#             f.save()
+#         return f
 
-    @classmethod
-    def update_feed(cls):
-        d = feedparser.parse('https://github.com/micki6491/Django-Blog/commits/master.atom')
-        a = d.entries[0]
-        date = d.feed.updated
-        title = a.title
-        message = a.content
-        if FeedModule.objects.count() == 0:
-            f = FeedModule.objects.create(title=title, message=message, date=date)
-            f.save()
-        else:
-            f = FeedModule.objects.last()
-            f.delete()
-            f = FeedModule.objects.create(title=title, message=message, date=date)
-            f.save()
-        return f
+
+class Publication(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Article(models.Model):
-    category = models.CharField(max_length=30, default='default')
     subject = models.CharField(max_length=30, unique=True)
     creator = models.ForeignKey(User, related_name='articles', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     message = models.TextField(max_length=30000, default='')
     photo = models.ImageField(upload_to="img/", null=True, blank=True)
+    publication = models.ForeignKey(Publication, related_name='articles', on_delete=models.CASCADE)
 
     def __str__(self):
-        truncated_message = Truncator(self.message)
-        return truncated_message.chars(100)
+        return self.subject
 
-    def get_page_count(self):
-        articles = Article.objects.filter(category=self.category)
-        count = articles.count()
-        pages = count / 10
-        return math.ceil(pages)
-
-    def has_many_pages(self, count=None):
-        if count is None:
-            count = self.get_page_count()
-        return count > 6
-
-    def get_page_range(self):
-        count = self.get_page_count()
-        if self.has_many_pages():
-            return range(1, 5)
-        return range(1, count + 1)
+    class Meta:
+        ordering = ('created_at',)
 
     @classmethod
     def generate_data(cls):
         user = User.objects.first()
-        categories = ['Tutorials', 'Tips', 'News']
+        publications = Publication.objects.all()
         for i in range(25):
             seed()
-            categorie = categories[randint(0, 2)]
+            publication = publications[randint(0, publications.count() - 1)]
             subject = forgery_py.lorem_ipsum.title(randint(1, 5))
             message = paragraphe(randint(1, 5))
             url = f'https://picsum.photos/950/450?image={randint(1,1000)}'
             Article.objects.create(
-                category=categorie,
+                publication=publication,
                 subject=subject,
                 creator=user,
                 message=message,
@@ -90,27 +83,3 @@ def paragraphe(n):
     s = lambda: forgery_py.lorem_ipsum.sentence()
     p = lambda: ''.join([s() for k in range(randint(2, 40))])
     return '\n\n'.join(p() for j in range(5))
-
-# def get_previsions(cls, date=datetime.today()):
-#     query = cls.objects.filter(retrait=date, accepted=True, archived=False,
-#                                cancelled=False, pickedup=False)
-#     orders = {}
-#     for i in query:
-#         for k, v in i.get_order().items():
-#             if k in orders:
-#                 orders[k]['quantity'] += v['quantity']
-#                 orders[k]['total'] = round(
-#                     orders[k]['quantity'] * v['price'], 2)
-#             else:
-#                 orders[k] = v
-#     articles = {k: v for k, v in sorted(orders.items(), key=lambda x: x)}
-#     total_price = round(sum([orders[i]['total'] for i in orders]), 2)
-#     total_quantity = sum([orders[i]['quantity'] for i in orders])
-#     articles.update({
-#         '': {
-#             'quantity': total_quantity,
-#             'price': '',
-#             'total': total_price
-#         }
-#     })
-#     return articles

@@ -40,10 +40,3 @@ body {
 .custom_class {
     padding: 20px;
 }
-
-.rssincl-box-id .rssincl-head .rssincl-title .rssincl-content .rssincl-itemtitle .rssincl-itemdesc .rssincl-itemdate {
-
-    font-family: 'Montserrat', sans-serif;
-    color: #4e555b;
-    background-color: #f7efd2;
-}

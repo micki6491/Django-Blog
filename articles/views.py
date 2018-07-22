@@ -2,25 +2,20 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
-from .models import Article, FeedModule
+from .models import Publication, Article
 from .forms import NewArticleForm
 
 
 # Create your views here.
 
 class HomeView(ListView):
-    model = Article
-    context_object_name = 'articles'
+    model = Publication
+    context_object_name = 'publications'
     template_name = 'home.html'
-    articles = Article.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['last_article'] = Article.objects.last()
-        context['article_tips'] = Article.objects.filter(category='Tips').order_by('-created_at')[:3]
-        context['article_news'] = Article.objects.filter(category='News').order_by('-created_at')[:3]
-        context['article_tutos'] = Article.objects.filter(category='Tutorials').order_by('-created_at')[:3]
-        context['feed'] = FeedModule.objects.last()
         return context
 
 
@@ -42,7 +37,7 @@ def write_article(request):
         if form.is_valid():
             form.save(commit=False)
             a = Article.objects.create(
-                category=form.cleaned_data.get('category'),
+                publication=form.cleaned_data.get('publication'),
                 subject=form.cleaned_data.get('subject'),
                 message=form.cleaned_data.get('message'),
                 photo=form.cleaned_data.get('photo'),
