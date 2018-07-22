@@ -1,38 +1,11 @@
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
-from django.utils.text import Truncator
 import forgery_py
 from random import seed, randint
 from markdown import markdown
-import math
-import feedparser
 # Create your models here.
 
 from django.db import models
-
-
-# class FeedModule(models.Model):
-#     title = models.CharField(max_length=20, default='default')
-#     message = models.TextField(max_length=1000, default='default')
-#     author = models.CharField(max_length=15, default='default')
-#     date = models.DateTimeField(auto_now_add=False)
-#
-#     @classmethod
-#     def update_feed(cls):
-#         d = feedparser.parse('https://github.com/micki6491/Django-Blog/commits/master.atom')
-#         a = d.entries[0]
-#         date = d.feed.updated
-#         title = a.title
-#         message = a.content
-#         if FeedModule.objects.count() == 0:
-#             f = FeedModule.objects.create(title=title, message=message, date=date)
-#             f.save()
-#         else:
-#             f = FeedModule.objects.last()
-#             f.delete()
-#             f = FeedModule.objects.create(title=title, message=message, date=date)
-#             f.save()
-#         return f
 
 
 class Publication(models.Model):
